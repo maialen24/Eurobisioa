@@ -97,6 +97,7 @@ public class BozkaketaTaulaKud implements Initializable {
                 TableCell<Herrialde, Integer> cell = defaultTextFieldCellFactory.call(col);
 
                 cell.setOnMouseClicked(event -> {
+
                     if (! cell.isEmpty()) {
                         if (cell.getTableView().getSelectionModel().getSelectedItem().getIzena().equals(mainApp.hIzena())) {
                             cell.setEditable(false);

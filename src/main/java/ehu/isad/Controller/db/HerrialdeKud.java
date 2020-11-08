@@ -100,6 +100,31 @@ public class HerrialdeKud {
         return puntuak;
     }
 
+    public List<Herrialde> top3lortu(){
+        String query = "select herrialdea, bandera, puntuak from Ordezkaritza, Herrialde where izena=herrialdea and urtea=year(now()) ORDER BY puntuak desc";
+        DBkudeatzaile dbKudeatzaile = DBkudeatzaile.getInstantzia();
+        ResultSet rs = dbKudeatzaile.execSQL(query);
+
+        List<Herrialde> emaitza = new ArrayList<>();
+        try {
+            int i=0;
+            while (rs.next() && i<3) {
+                String izena = rs.getString("herrialdea");
+                String bandera = rs.getString("bandera");
+                int puntuak= rs.getInt("puntuak");
+                Herrialde h=new Herrialde(izena,bandera);
+                h.setPuntuak(puntuak);
+                emaitza.add(h);
+                i++;
+
+            }
+        } catch(SQLException throwables){
+            throwables.printStackTrace();
+        }
+
+        return emaitza;
+    }
+
     public void puntuakEguneratu(String nork,String nori, int puntuak){
         String query = "insert into Bozkaketa(bozkatuaIzanDa,bozkatuDu,urtea,puntuak) values('"+nori+"', '"+nork+"' ,year(now()), '"+puntuak+"')";
         DBkudeatzaile dbKudeatzaile = DBkudeatzaile.getInstantzia();
