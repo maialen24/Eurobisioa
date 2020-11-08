@@ -40,7 +40,13 @@ public class HerrialdeaHautatuKud implements Initializable {
     //Begiratu ia bozkatu duen
 
         //Bozkatu badu
-        mainApp.erroreaErakutsi();
+        Herrialde h= new Herrialde(aukerak.getValue().getIzena(),aukerak.getValue().getBanderaPath());
+        mainApp.herrialdeaEzarri(h);
+        if (HerrialdeKud.getInstance().bozkatuDu(aukerak.getValue().getIzena())){
+            mainApp.erroreaErakutsi();
+        }else{
+            mainApp.BozkatuTaulaErakutsi();
+        }
     }
 
 
@@ -71,6 +77,7 @@ public class HerrialdeaHautatuKud implements Initializable {
         });
         aukerak.setItems(herrialdeak);
         aukerak.setEditable(false);
+
     }
 
 }

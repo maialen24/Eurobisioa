@@ -1,59 +1,54 @@
 package ehu.isad.Controller.ui;
 
 import ehu.isad.App;
-import ehu.isad.Herrialde;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ErroreaKud implements Initializable {
+public class TOP3Kud implements Initializable {
 
     private App mainApp;
+
     @FXML
     private ImageView eurobisioImage;
 
     @FXML
-    private Label erroreaLabel;
+    private Label top3;
 
     @FXML
-    private Button okButton;
+    private TableView<?> topTaula;
 
     @FXML
-    private ImageView banderaImage;
+    private TableColumn<?, ?> banderakZut;
+
+    @FXML
+    private TableColumn<?, ?> puntuakZut;
+
+    @FXML
+    private Button OKbutton;
 
     @FXML
     void onClick(ActionEvent event) {
-    mainApp.itxi();
+        mainApp.itxi();
     }
-
     public void setMainApp(App main) {
         this.mainApp = main;
     }
 
-    public void hasieratu(){
-        Herrialde h=mainApp.lortuH();
-        erroreaLabel.setText(h.getIzena()+" jada banatu ditu bere puntuak.");
-
-        //Image image2 = new Image(getClass().getResourceAsStream("/Banderak/"+h.getIzena()+".png"));
-        banderaImage.setImage(h.getBandera());
-    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         Image image = new Image(getClass().getResourceAsStream("/Eurovision_Song_Contest.png"));
         eurobisioImage.setImage(image);
-
-/*        Herrialde h=mainApp.lortuH();
-        erroreaLabel.setText(h.getIzena()+" jada banatu ditu bere puntuak.");
-
-        Image image2 = new Image(getClass().getResourceAsStream("/Banderak/"+h.getIzena()+".png"));
-        banderaImage.setImage(image2);*/
     }
+
 }

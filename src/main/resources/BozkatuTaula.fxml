@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ehu.isad.Controller.ui.BozkaketaTaulaKud">
+   <children>
+      <ImageView fx:id="BanderaImage" fitHeight="69.0" fitWidth="84.0" layoutX="36.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="EurovisionImage" fitHeight="88.0" fitWidth="200.0" layoutX="380.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="info" layoutX="183.0" layoutY="104.0" text="Label" />
+      <TableView fx:id="bozkatuTaula" layoutX="22.0" layoutY="137.0" prefHeight="203.0" prefWidth="550.0">
+        <columns>
+          <TableColumn fx:id="banderakZut" prefWidth="61.0" />
+          <TableColumn fx:id="herrialdeaZut" prefWidth="119.0" text="Herrialdea" />
+            <TableColumn fx:id="artistaZut" prefWidth="124.0" text="Artista" />
+            <TableColumn fx:id="abestiaZut" prefWidth="117.0" text="Abestia" />
+            <TableColumn fx:id="puntuakZut" prefWidth="85.0" text="Puntuak" />
+        </columns>
+      </TableView>
+      <Button layoutX="219.0" layoutY="354.0" mnemonicParsing="false" onAction="#onClick" text="Bozkaketa gorde" />
+   </children>
+</AnchorPane>

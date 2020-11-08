@@ -5,11 +5,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ehu.isad.Controller.ui.ErroreaKud">
    <children>
       <ImageView fx:id="eurobisioImage" fitHeight="71.0" fitWidth="191.0" layoutX="395.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="erroreaLabel" layoutX="207.0" layoutY="162.0" />
-      <Button fx:id="okButton" layoutX="269.0" layoutY="318.0" mnemonicParsing="false" text="OK" />
+      <Button fx:id="okButton" layoutX="269.0" layoutY="318.0" mnemonicParsing="false" onAction="#onClick" text="OK" />
+      <ImageView fx:id="banderaImage" fitHeight="64.0" fitWidth="100.0" layoutX="21.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

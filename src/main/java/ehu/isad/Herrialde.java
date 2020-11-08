@@ -1,9 +1,32 @@
 package ehu.isad;
 
+import java.awt.*;
+import javafx.scene.image.Image;
 public class Herrialde {
     String izena;
-    String bandera;
+    Image bandera;
+    int puntuak=0;
     String tv;
+    String banderaPath;
+    String izenArtistikoa;
+    String abestia;
+
+
+    public String getIzenArtistikoa() {
+        return izenArtistikoa;
+    }
+
+    public void setIzenArtistikoa(String izenArtistikoa) {
+        this.izenArtistikoa = izenArtistikoa;
+    }
+
+
+
+    public void setAbestia(String pabestia) {
+        this.abestia = pabestia;
+    }
+
+
 
     public String getIzena() {
         return izena;
@@ -13,12 +36,23 @@ public class Herrialde {
         this.izena = izena;
     }
 
-    public String getBandera() {
+    public void setPuntuak(int p) {
+        this.puntuak=p;
+    }
+    public int getPuntuak() {
+        return puntuak;
+    }
+    public Image getBandera(){
         return bandera;
     }
 
+    public String getBanderaPath() {
+        return banderaPath;
+    }
+
     public void setBandera(String bandera) {
-        this.bandera = bandera;
+        this.bandera = new Image("/Banderak/"+bandera+".png") {
+        };
     }
 
     public String getTv() {
@@ -40,6 +74,11 @@ public class Herrialde {
 
     public Herrialde(String izena, String bandera) {
         this.izena = izena;
-        this.bandera = bandera;
+        this.bandera = new Image("/Banderak/"+bandera+".png");
+        this.banderaPath=bandera;
+    }
+
+    public void setArtista(String pizenArtistikoa) {
+        izenArtistikoa=pizenArtistikoa;
     }
 }
