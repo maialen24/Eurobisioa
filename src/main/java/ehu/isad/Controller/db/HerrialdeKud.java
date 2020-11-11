@@ -42,28 +42,21 @@ public class HerrialdeKud {
     }
 
     public boolean bozkatuDu(String herrialdea){
-        boolean emaitza=true;
-        int p=0;
-        String query = "select puntuak from Bozkaketa where bozkatuDu='"+herrialdea+"' and year(urtea)=year(now())";
+        String query = "select puntuak from Bozkaketa where bozkatuDu like '%"+herrialdea+"%' and urtea=year(now())";
         DBkudeatzaile dbKudeatzaile = DBkudeatzaile.getInstantzia();
         ResultSet rs = dbKudeatzaile.execSQL(query);
 
         try {
-            while (rs.next()) {
-                p = p+rs.getInt("puntuak");
-            }
+            return rs.next();
         } catch(SQLException throwables){
             throwables.printStackTrace();
-        }
-        if(p<5){
-            emaitza=false;
+            return false;
         }
 
-        return emaitza;
     }
 
     public Artista lortuArtista(String Herrialde){
-        String query = "select artista,abestia from Ordezkaritza where urtea=year(now()) and herrialdea='"+Herrialde+"'";
+        String query = "select artista,abestia from Ordezkaritza where urtea=year(now()) and herrialdea like '%"+Herrialde+"%'";
         DBkudeatzaile dbKudeatzaile = DBkudeatzaile.getInstantzia();
         ResultSet rs = dbKudeatzaile.execSQL(query);
         Artista a=null;
@@ -73,18 +66,18 @@ public class HerrialdeKud {
 
                 String izena = rs.getString("artista");
                 String abestia = rs.getString("abestia");
-                a=new Artista(izena);
-                a.setAbestia(abestia);
+                a=new Artista(izena,abestia);
 
             }
         } catch(SQLException throwables){
             throwables.printStackTrace();
         }
+
         return a;
     }
 
     public int lortuPuntuak(String herrialdea){
-        String query = "select puntuak from Bozkaketa where year(urtea)=year(now()) and bozkatuaIzanDa='"+herrialdea+"'";
+        String query = "select puntuak from Bozkaketa where year(urtea)=year(now()) and bozkatuaIzanDa like '%"+herrialdea+"%'";
         DBkudeatzaile dbKudeatzaile = DBkudeatzaile.getInstantzia();
         ResultSet rs = dbKudeatzaile.execSQL(query);
         int puntuak=0;
@@ -125,9 +118,12 @@ public class HerrialdeKud {
         return emaitza;
     }
 
-    public void puntuakEguneratu(String nork,String nori, int puntuak){
+    public void puntuakEguneratu(String nork,String nori, int puntuak,String artista){
         String query = "insert into Bozkaketa(bozkatuaIzanDa,bozkatuDu,urtea,puntuak) values('"+nori+"', '"+nork+"' ,year(now()), '"+puntuak+"')";
         DBkudeatzaile dbKudeatzaile = DBkudeatzaile.getInstantzia();
         ResultSet rs = dbKudeatzaile.execSQL(query);
+
+        String query2="update Ordezkaritza set puntuak="+puntuak+" where herrialdea like '%"+nori+"%' and urtea=year(now()) and artista='"+artista+"'";
+        ResultSet rs2 = dbKudeatzaile.execSQL(query2);
     }
 }

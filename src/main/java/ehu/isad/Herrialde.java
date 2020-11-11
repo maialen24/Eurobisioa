@@ -32,6 +32,10 @@ public class Herrialde {
         return izena;
     }
 
+    public String getAbestia() {
+        return abestia;
+    }
+
     public void setIzena(String izena) {
         this.izena = izena;
     }

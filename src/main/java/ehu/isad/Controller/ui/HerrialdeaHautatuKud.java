@@ -37,9 +37,7 @@ public class HerrialdeaHautatuKud implements Initializable {
 
     @FXML
     void onClick(ActionEvent event) {
-    //Begiratu ia bozkatu duen
 
-        //Bozkatu badu
         Herrialde h= new Herrialde(aukerak.getValue().getIzena(),aukerak.getValue().getBanderaPath());
         mainApp.herrialdeaEzarri(h);
         if (HerrialdeKud.getInstance().bozkatuDu(aukerak.getValue().getIzena())){

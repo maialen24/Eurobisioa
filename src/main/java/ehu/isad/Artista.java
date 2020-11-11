@@ -31,8 +31,8 @@ public class Artista {
         this.partaideKop = partaideKop;
     }
 
-    public Artista(String izenArtistikoa) {
-
+    public Artista(String izenArtistikoa,String pabesti) {
+        this.abestia=pabesti;
         this.izenArtistikoa = izenArtistikoa;
     }
 

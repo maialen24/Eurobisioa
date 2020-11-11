@@ -100,15 +100,20 @@ public class App extends Application {
     public void BozkatuTaulaErakutsi() {
         stage.setScene(new Scene(bozkatuTaulaUI));
         bozkatuTaulaKud.hasieratu();
+        bozkatuTaulaKud.setMainApp(this);
         stage.show();
         stage.setTitle("Bozkaketa panela");
 
 
     }
+    public void refresh(){
+        top3Kud.refresh();
+    }
     public void TOP3Erakutsi() {
         stage.setScene(new Scene(top3UI));
         stage.show();
         stage.setTitle("Datuak sartu");
+
 
     }
 

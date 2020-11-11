@@ -42,7 +42,6 @@ public class ErroreaKud implements Initializable {
         Herrialde h=mainApp.lortuH();
         erroreaLabel.setText(h.getIzena()+" jada banatu ditu bere puntuak.");
 
-        //Image image2 = new Image(getClass().getResourceAsStream("/Banderak/"+h.getIzena()+".png"));
         banderaImage.setImage(h.getBandera());
     }
     @Override
@@ -50,10 +49,5 @@ public class ErroreaKud implements Initializable {
         Image image = new Image(getClass().getResourceAsStream("/Eurovision_Song_Contest.png"));
         eurobisioImage.setImage(image);
 
-/*        Herrialde h=mainApp.lortuH();
-        erroreaLabel.setText(h.getIzena()+" jada banatu ditu bere puntuak.");
-
-        Image image2 = new Image(getClass().getResourceAsStream("/Banderak/"+h.getIzena()+".png"));
-        banderaImage.setImage(image2);*/
     }
 }

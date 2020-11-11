@@ -47,6 +47,41 @@ public class TOP3Kud implements Initializable {
     void onClick(ActionEvent event) {
         mainApp.itxi();
     }
+    public void refresh(){
+
+        List<Herrialde> HerrialdeList=HerrialdeKud.getInstance().top3lortu();
+        ObservableList<Herrialde> herrialdea = FXCollections.observableArrayList(HerrialdeList);
+
+        for(int i=0;i<HerrialdeList.size();i++) {
+
+            HerrialdeZut.setCellValueFactory(new PropertyValueFactory<>("izena"));
+            puntuakZut.setCellValueFactory(new PropertyValueFactory<>("puntuak"));
+
+            banderakZut.setCellValueFactory(new PropertyValueFactory<>("bandera"));
+            banderakZut.setCellFactory(p -> new TableCell<>() {
+                public void updateItem(Image image, boolean empty) {
+                    if (image != null && !empty){
+                        final ImageView imageview = new ImageView();
+                        imageview.setFitHeight(14);
+                        imageview.setFitWidth(20);
+                        imageview.setImage(image);
+                        setGraphic(imageview);
+                        setAlignment(Pos.CENTER);
+
+
+                    }else{
+                        setGraphic(null);
+                        setText(null);
+                    }
+                }
+            });
+
+        }
+        topTaula.setItems(herrialdea);
+        topTaula.refresh();
+
+
+    }
     public void setMainApp(App main) {
         this.mainApp = main;
     }
@@ -58,34 +93,6 @@ public class TOP3Kud implements Initializable {
         eurobisioImage.setImage(image);
 
         top3.setText("TOP 3:");
-        List<Herrialde> HerrialdeList=HerrialdeKud.getInstance().top3lortu();
-        ObservableList<Herrialde> herrialdea = FXCollections.observableArrayList(HerrialdeList);
-
-        for(int i=0;i<HerrialdeList.size();i++) {
-
-            HerrialdeZut.setCellValueFactory(new PropertyValueFactory<>("izena"));
-            puntuakZut.setCellValueFactory(new PropertyValueFactory<>("puntuak"));
-
-            banderakZut.setCellValueFactory(new PropertyValueFactory<Herrialde, Image>("bandera"));
-            banderakZut.setCellFactory(p -> new TableCell<>() {
-                public void updateItem(Image image, boolean empty) {
-                    if (image != null && !empty){
-                        final ImageView imageview = new ImageView();
-                        imageview.setFitHeight(14);
-                        imageview.setFitWidth(20);
-                        imageview.setImage(image);
-                        setGraphic(imageview);
-                        setAlignment(Pos.CENTER);
-                        // tbData.refresh();
-                    }else{
-                        setGraphic(null);
-                        setText(null);
-                    }
-                }
-            });
-
-        }
-        topTaula.setItems(herrialdea);
-        }
+    }
     }
 
